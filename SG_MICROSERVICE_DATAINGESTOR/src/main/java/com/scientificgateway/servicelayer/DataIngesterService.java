@@ -5,6 +5,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
+import javax.ws.*;
+
+import org.glassfish.jersey.client.ClientConfig;
+
 import com.scientificgateway.helpers.DownloadGZFile;
 import com.scientificgateway.helpers.UNZIPfile;
 
@@ -13,8 +22,10 @@ public class DataIngesterService {
 	public String returnResponseFile(String station, String date, String hours, String minutes, String seconds)
 			throws IOException {
 
-		DownloadGZFile dzip = new DownloadGZFile();
-		UNZIPfile unzip = new UNZIPfile();
+		/*
+		 * DownloadGZFile dzip = new DownloadGZFile(); UNZIPfile unzip = new
+		 * UNZIPfile();
+		 */
 
 		System.out.println(station);
 		StringTokenizer inputstation = new StringTokenizer(station, "-");
@@ -35,26 +46,47 @@ public class DataIngesterService {
 					+ stationcode + "/" + filename;
 
 			System.out.println(url);
-
-			String downloadedFile = dzip.downloadFile(url);
-			if (downloadedFile.equals("xxx")) {
-				System.out.println("testing other URLs");
-				l = convertMinutesSecondsHoursDays(hours, minutes, seconds, day, month, year);
-				year = l.get(0);
-				month = l.get(1);
-				day = l.get(2);
-				hours = l.get(3);
-				minutes = l.get(4);
-				seconds = l.get(5);
-				continue;
-
-			} else {
-
-				unzip.unzip(downloadedFile, "hello.txt");
-				System.out.println("file created");
-				return url;
-			}
+			return url;
 		}
+
+		/*
+		 * String downloadedFile = dzip.downloadFile(url); if
+		 * (downloadedFile.equals("xxx")) {
+		 * System.out.println("testing other URLs"); l =
+		 * convertMinutesSecondsHoursDays(hours, minutes, seconds, day, month,
+		 * year); year = l.get(0); month = l.get(1); day = l.get(2); hours =
+		 * l.get(3); minutes = l.get(4); seconds = l.get(5); continue;
+		 * 
+		 * } else {
+		 * 
+		 * unzip.unzip(downloadedFile, "hello.txt");
+		 * System.out.println("file created"); return url; } }
+		 */
+
+	}
+
+	public String sendURL(String url) {
+		ClientConfig clientConfig = new ClientConfig();
+
+		Client client = ClientBuilder.newClient(clientConfig);
+
+		// System.out.println("Client client1 ");
+
+		WebTarget target = client.target("http://localhost:8080/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetection")
+				.path("send");
+
+		// System.out.println("dataingestor");
+		System.out.println("in send url    " + url);
+
+		// Response response = target.request().post(Entity.entity(url,
+		// "application/xml"), Response.class);
+		// System.out.println(response.toString());
+		String responsefrom;
+		responsefrom = target.request().post(Entity.entity(url, "application/xml"), String.class);
+
+		System.out.println();
+		System.out.println(responsefrom);
+		return url;
 
 	}
 
