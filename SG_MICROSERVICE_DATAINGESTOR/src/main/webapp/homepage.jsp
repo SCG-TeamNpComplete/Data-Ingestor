@@ -304,6 +304,9 @@ div.thumbnail .glyphicon-ok-circle {
 	<script src="vendor.js"></script>
 
 	<script src="jqueryform.com.min.js?ver=v1.0-rc24&id=jqueryform-96767c"></script>
+	
+	
+	
 
 
 	<!-- [ Start: Select2 support ] ---------------------------------- -->
@@ -360,7 +363,7 @@ div.thumbnail .glyphicon-ok-circle {
 	</script>
 	<!-- [ End: Select2 support ] ---------------------------------- -->
 
-
+	<script src="//fast.wistia.net/labs/fresh-url/v1.js" async></script>
 
 	<script type="text/javascript">
 		// setup number fields with touchSpin
