@@ -16,7 +16,7 @@ import com.scientificgateway.servicelayer.DataIngesterService;
 
 @Path("/dataingester")
 public class DataIngester {
-	private static Logger log = Logger.getLogger(DataIngester.class.getName());
+	public static Logger log = Logger.getLogger(DataIngester.class.getName());
 	private DataIngesterService DIservice;
 
 	@GET
