@@ -72,7 +72,7 @@ public class DataIngesterService {
 
 		// System.out.println("Client client1 ");
 
-		WebTarget target = client.target("http://localhost:8080/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetection")
+		WebTarget target = client.target("http://ec2-54-69-92-137.us-west-2.compute.amazonaws.com:9999/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetection")
 				.path("send");
 
 		// System.out.println("dataingestor");
