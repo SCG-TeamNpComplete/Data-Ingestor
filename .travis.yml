@@ -18,7 +18,7 @@ install:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker push kedargn/dataingestor
 
-script: cd "SG_MICROSERVICE_DATAINGESTOR" && mvn clean install -DskipTests=true
+script: mvn clean install -DskipTests=true
 
 before_deploy:
   - cd ..
