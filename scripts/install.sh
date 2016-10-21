@@ -1,5 +1,5 @@
-echo 'Installing SG_MICROSERVICE_DATAINGESTOR' >> /var/log/tomcat.log
-cd '/home/ec2-user/SG_MICROSERVICE_DATAINGESTOR'
-sudo mvn -e clean install >> /var/log/tomcat.log
-sudo cp target/*.war /usr/local/tomcat7/apache-tomcat-7.0.72/webapps/ >> /var/log/tomcat.log
-sudo sh /usr/local/tomcat7/apache-tomcat-7.0.72/bin/startup.sh >> /var/log/tomcat.log 2>&1 &
+echo 'starting installation process'
+cd '/home/ec2-user/docker'
+sudo docker login -e="kedar.gn20@gmail.com" -u="kedargn" -p="npcomplete"   #TODO : hide password
+sudo docker pull kedargn/dataingestor
+sudo docker run -d -p 64000:64000 --name dataingestor $(sudo docker images | grep kedargn/dataingestor | awk '{print $3}') >> ./log.txt
