@@ -32,7 +32,7 @@ public class DataIngesterTest {
 		clientConfig = new ClientConfig();
 		client = ClientBuilder.newClient(clientConfig);
 		target = client
-				.target("http://ec2-54-69-92-137.us-west-2.compute.amazonaws.com:8085/SG_MICROSERVICE_DATAINGESTOR/webapi")
+				.target("http://ec2-35-160-231-198.us-west-2.compute.amazonaws.com:8085/SG_MICROSERVICE_DATAINGESTOR/webapi")
 				.path("dataingester").path("get");
 
 	}
