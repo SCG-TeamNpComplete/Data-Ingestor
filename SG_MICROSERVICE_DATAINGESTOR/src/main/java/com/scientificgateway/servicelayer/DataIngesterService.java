@@ -16,6 +16,7 @@ import org.glassfish.jersey.client.ClientConfig;
 
 import com.scientificgateway.helpers.DownloadGZFile;
 import com.scientificgateway.helpers.UNZIPfile;
+import com.scientificgateway.milestone1.DataIngester;
 
 public class DataIngesterService {
 
@@ -66,6 +67,9 @@ public class DataIngesterService {
 	}
 
 	public String sendURL(String url) {
+		
+		DataIngester.log.info("inside sendURL() method");
+		
 		ClientConfig clientConfig = new ClientConfig();
 
 		Client client = ClientBuilder.newClient(clientConfig);
@@ -74,7 +78,9 @@ public class DataIngesterService {
 
 		WebTarget target = client.target("http://localhost:8080/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetection")
 				.path("send");
-
+		
+		
+		
 		// System.out.println("dataingestor");
 		System.out.println("in send url    " + url);
 
@@ -83,7 +89,9 @@ public class DataIngesterService {
 		// System.out.println(response.toString());
 		String responsefrom;
 		responsefrom = target.request().post(Entity.entity(url, "application/xml"), String.class);
-
+		
+		DataIngester.log.info("notified Storm Detector ");
+		
 		System.out.println();
 		System.out.println(responsefrom);
 		return url;

@@ -1,7 +1,5 @@
 package com.scientificgateway.BeanParams;
 
-import java.util.Date;
-
 import javax.ws.rs.QueryParam;
 
 public class DataIngesterParamHolder {
