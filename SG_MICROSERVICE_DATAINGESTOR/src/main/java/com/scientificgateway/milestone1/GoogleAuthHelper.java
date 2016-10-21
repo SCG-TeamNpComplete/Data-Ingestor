@@ -32,7 +32,7 @@ public class GoogleAuthHelper {
 	/**
 	 * Callback URI that google will redirect to after successful authentication
 	 */
-	private static final String CALLBACK_URI = "http://localhost:8080/SG_MICROSERVICE_DATAINGESTOR/webapi/home";
+	private static final String CALLBACK_URI = "http://ec2-54-69-92-137.us-west-2.compute.amazonaws.com:8080/SG_MICROSERVICE_DATAINGESTOR/webapi/home";
 
 	// start google authentication constants
 	private static final Iterable<String> SCOPE = Arrays

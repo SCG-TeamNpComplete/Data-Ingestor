@@ -38,30 +38,4 @@ public class DataIngester {
 
 	}
 
-	/*
-	 * @GET //@POST
-	 * 
-	 * @Path("/get1")
-	 * 
-	 * @Produces("application/xml") public String generateKML() throws
-	 * ParseException {
-	 * 
-	 * String dateString ="2015-06-06"; String locationCode ="KABX"; Date date =
-	 * new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
-	 * //System.out.println(date);
-	 * 
-	 * String filevalue
-	 * ="http://noaa-nexrad-level2.s3.amazonaws.com/2015/03/03/KABX/KABX20150303_001050_V06.gz";
-	 * 
-	 * 
-	 * String result = "@Produces(\"application/xml\")" + "\n\n" +
-	 * "Output:\n\n Example KML, we can add tags here " + "\n\n" +
-	 * "\n\n URL for file is " +filevalue+ "\n\n" +
-	 * " use this for download \n\n";
-	 * 
-	 * return "<KMLResponseFromStormDetector>" + "<year>" + date + "</year>" +
-	 * "<location>" + locationCode + "</location>"+ "<filename>" + result +
-	 * "</filename>" + "</KMLResponseFromStormDetector>"; }
-	 */
-
 }
