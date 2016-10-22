@@ -76,7 +76,7 @@ public class DataIngesterService {
 
 		// System.out.println("Client client1 ");
 
-		WebTarget target = client.target("http://ec2-35-160-231-198.us-west-2.compute.amazonaws.com:9999/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetection")
+		WebTarget target = client.target("http://ec2-35-161-48-143.us-west-2.compute.amazonaws.com:9999/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetection")
 				.path("send");
 		
 		
