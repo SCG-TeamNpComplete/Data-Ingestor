@@ -395,7 +395,7 @@ div.thumbnail .glyphicon-ok-circle {
 	
 	<script type="text/javascript">
 	function signOut(){
-		document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://ec2-54-69-92-137.us-west-2.compute.amazonaws.com:8085/SG_MICROSERVICE_DATAINGESTOR";
+		document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://ec2-35-160-137-157.us-west-2.compute.amazonaws.com:8085/SG_MICROSERVICE_DATAINGESTOR";
 	}
 	
 	</script>
