@@ -1,6 +1,8 @@
 package com.scientificgateway.servicelayer;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -12,6 +14,8 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 import javax.ws.*;
 
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
 import org.glassfish.jersey.client.ClientConfig;
 
 import com.scientificgateway.helpers.DownloadGZFile;
@@ -76,9 +80,34 @@ public class DataIngesterService {
 
 	}
 
-	public String sendURL(String url) {
+	public String sendURL(String url) throws URISyntaxException {
 		
-		DataIngester.log.info("inside sendURL() method");
+		URIBuilder builder = new URIBuilder();
+		builder.setScheme("http").setHost("10.0.0.117:8080")
+				.setPath("/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetectionManager/delegate");
+		URI uri = builder.build();
+		HttpGet httpget = new HttpGet(uri);
+		ClientConfig clientConfig = new ClientConfig();
+		Client client = ClientBuilder.newClient(clientConfig);
+		String response =client.target(uri).request().get(String.class);
+		System.out.println(response);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*DataIngester.log.info("inside sendURL() method");
 		
 		ClientConfig clientConfig = new ClientConfig();
 
@@ -103,7 +132,7 @@ public class DataIngesterService {
 		DataIngester.log.info("notified Storm Detector ");
 		
 		System.out.println();
-		System.out.println(responsefrom);
+		System.out.println(responsefrom);*/
 		return url;
 
 	}

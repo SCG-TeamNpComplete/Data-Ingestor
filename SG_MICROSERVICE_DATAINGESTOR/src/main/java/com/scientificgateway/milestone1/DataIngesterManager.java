@@ -98,14 +98,10 @@ public class DataIngesterManager {
 					.setParameter("minutes", minutes).setParameter("seconds", seconds);
 			URI uri = builder.build();
 			HttpGet httpget = new HttpGet(uri);
-
 			ClientConfig clientConfig = new ClientConfig();
 			Client client = ClientBuilder.newClient(clientConfig);
-
 			String response =client.target(uri).request().get(String.class);
-
 			System.out.println(response);
-
 			return response;
 
 		} catch (Exception e) {

@@ -1,6 +1,7 @@
 package com.scientificgateway.milestone1;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
@@ -23,7 +24,7 @@ public class DataIngester {
 	@Path("/get")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.TEXT_PLAIN)
-	public String returnURL(@BeanParam DataIngesterParamHolder dip) throws IOException {
+	public String returnURL(@BeanParam DataIngesterParamHolder dip) throws IOException, URISyntaxException {
 		System.out.println("in /get");
 		log.info("entered Data Ingester");
 		DIservice = new DataIngesterService();
@@ -31,19 +32,14 @@ public class DataIngester {
 				dip.getSeconds());
 		log.info("retrieved URL");
 
-		//DIservice.sendURL(url);
+		DIservice.sendURL(url);
 
 		log.info("called sendURL() method");
 		return url;
 
 	}
 	
-	@GET
-	@Path("/yo")
-	public String dummy(){
-		
-		return "tujh se na ho payega";
-	}
+	
 	
 
 }
