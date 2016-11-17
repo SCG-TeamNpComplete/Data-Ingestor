@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd '/home/ec2-user/docker'
-sudo docker login -e="kedar.gn20@gmail.com" -u="kedargn" -p="npcomplete"   #TODO : hide password
+sudo docker login -u="kedargn" -p="npcomplete"   #TODO : hide password
 sudo docker pull kedargn/dataingestor
 
 no_of_instances=3     #change this to set the number of instances
