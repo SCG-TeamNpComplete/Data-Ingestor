@@ -81,15 +81,18 @@ public class DataIngesterService {
 	}
 
 	public String sendURL(String url) throws URISyntaxException {
-		
+		System.out.println("in send url of ingestor --> sending to storm detector delegator");
 		URIBuilder builder = new URIBuilder();
-		builder.setScheme("http").setHost("10.0.0.117:8080")
-				.setPath("/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetectionManager/delegate");
+		builder.setScheme("http").setHost("localhost:8080")
+		.setPath("/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetectionManager/delegate");
 		URI uri = builder.build();
-		HttpGet httpget = new HttpGet(uri);
+		//HttpGet httpget = new HttpGet(uri);
+		
+		System.out.println("url to call SD delegator" +uri);
 		ClientConfig clientConfig = new ClientConfig();
 		Client client = ClientBuilder.newClient(clientConfig);
 		String response =client.target(uri).request().get(String.class);
+		System.out.println("received resposne from StormDetector");
 		System.out.println(response);
 		
 		
@@ -133,7 +136,7 @@ public class DataIngesterService {
 		
 		System.out.println();
 		System.out.println(responsefrom);*/
-		return url;
+		return response;
 
 	}
 
