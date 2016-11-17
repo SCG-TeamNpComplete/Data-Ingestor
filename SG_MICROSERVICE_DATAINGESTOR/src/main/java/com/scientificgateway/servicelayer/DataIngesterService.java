@@ -19,6 +19,16 @@ import com.scientificgateway.helpers.UNZIPfile;
 import com.scientificgateway.milestone1.DataIngester;
 
 public class DataIngesterService {
+	
+	public static int index = 0;
+
+	public static int getIndex() {
+		return index;
+	}
+
+	public static void setIndex(int index) {
+		DataIngesterService.index = index;
+	}
 
 	public String returnResponseFile(String station, String date, String hours, String minutes, String seconds)
 			throws IOException {

@@ -24,18 +24,26 @@ public class DataIngester {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.TEXT_PLAIN)
 	public String returnURL(@BeanParam DataIngesterParamHolder dip) throws IOException {
-
+		System.out.println("in /get");
 		log.info("entered Data Ingester");
 		DIservice = new DataIngesterService();
 		String url = DIservice.returnResponseFile(dip.getStation(), dip.getDate(), dip.getHours(), dip.getMinutes(),
 				dip.getSeconds());
 		log.info("retrieved URL");
 
-		DIservice.sendURL(url);
+		//DIservice.sendURL(url);
 
 		log.info("called sendURL() method");
 		return url;
 
 	}
+	
+	@GET
+	@Path("/yo")
+	public String dummy(){
+		
+		return "tujh se na ho payega";
+	}
+	
 
 }

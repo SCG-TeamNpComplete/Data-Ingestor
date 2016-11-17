@@ -165,7 +165,7 @@ div.thumbnail .glyphicon-ok-circle {
 	<div class="container jf-form">
 		<form data-licenseKey="" name="jqueryform-96767c"
 			id="jqueryform-96767c"
-			action='/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get'
+			action='/SG_MICROSERVICE_DATAINGESTOR/webapi/DataIngesterManager/delegate'
 			method='get' enctype='multipart/form-data' novalidate
 			autocomplete="on">
 			<input type="hidden" name="method" value="validateForm"> <input
@@ -179,12 +179,12 @@ div.thumbnail .glyphicon-ok-circle {
 					class="form-control" id="c26" name="station"
 					data-rule-required="true" data-msg-required="SELECT A STATION">
 					<option value="">- Select -</option>
-					<option value="KABX-Albuquerque, NM">KABX-Albuquerque, NM</option>
-					<option value="KCYS-Cheyenne, WY">KCYS-Cheyenne, WY</option>
-					<option value="KDAX-Sacramento, CA">KDAX-Sacramento, CA</option>
-					<option value="KAMA-Amarillo, TX">KAMA-Amarillo, TX</option>
-					<option value="KEAX-Kansas City, MO">KEAX-Kansas City, MO</option>
-					<option value="KVBX-Kansas City, MO">KVBX-Kansas City, MO</option>
+					<option value="KABX-Albuquerque, NM">KABX-Albuquerque,NM</option>
+					<option value="KCYS-Cheyenne, WY">KCYS-Cheyenne,WY</option>
+					<option value="KDAX-Sacramento, CA">KDAX-Sacramento,CA</option>
+					<option value="KAMA-Amarillo, TX">KAMA-Amarillo,TX</option>
+					<option value="KEAX-Kansas City, MO">KEAX-KansasCity,MO</option>
+					<option value="KVBX-Kansas City, MO">KVBX-KansasCity,MO</option>
 				</select>
 
 
@@ -405,6 +405,7 @@ div.thumbnail .glyphicon-ok-circle {
 		// start jqueryform initialization
 		// --------------------------------
 		JF.init('#jqueryform-96767c');
+		// <!-- action='/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get' -->
 	</script>
 
 </body>
