@@ -17,9 +17,11 @@ install:
   - docker ps -a
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker push kedargn/dataingestor
-  - cd ..
 
 script: mvn clean install -DskipTests=true
+
+after_script:
+  - cd ..
 
 before_deploy:
   - zip -r SG_MICROSERVICE_DATAINGESTOR.zip scripts appspec.yml || true
