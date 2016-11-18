@@ -20,13 +20,13 @@ install:
 
 script: mvn clean install -DskipTests=true
 
-after_script:
-  - cd ..
 
 before_deploy:
+  - cd ..
   - zip -r SG_MICROSERVICE_DATAINGESTOR.zip scripts appspec.yml || true
   - mkdir -p "dpl_java_upload"
   - mv SG_MICROSERVICE_DATAINGESTOR.zip dpl_java_upload/SG_MICROSERVICE_DATAINGESTOR.zip || true
+  - cd "SG_MICROSERVICE_DATAINGESTOR"
 
 deploy:
   - provider: s3
