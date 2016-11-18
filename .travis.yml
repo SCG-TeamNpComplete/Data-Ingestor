@@ -69,7 +69,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings.
     secret_access_key: $AWS_SECRET_KEY
     bucket: sga-npcomplete-east
-    local_dir: dpl_cd_upload
+    local_dir: dpl_java_upload
     region: us-east-2
     skip_cleanup: true
     acl: public_read
