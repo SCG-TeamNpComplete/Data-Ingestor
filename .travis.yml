@@ -15,13 +15,13 @@ install:
   - cd "SG_MICROSERVICE_DATAINGESTOR" && mvn -e clean install
   - docker build -t kedargn/dataingestor ../.
   - docker ps -a
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker push kedargn/dataingestor
+  - cd ..
 
 script: mvn clean install -DskipTests=true
 
 before_deploy:
-  - cd ..
   - zip -r SG_MICROSERVICE_DATAINGESTOR.zip scripts appspec.yml || true
   - mkdir -p "dpl_java_upload"
   - mv SG_MICROSERVICE_DATAINGESTOR.zip dpl_java_upload/SG_MICROSERVICE_DATAINGESTOR.zip || true
