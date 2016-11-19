@@ -26,40 +26,7 @@ import com.scientificgateway.servicelayer.DataIngesterService;
 @Path("/dataingester")
 public class DataIngester {
 	
-	static{
-
-		System.out.println("Registering Data Ingester Service");
-		String endpointURI = "localhost:8080/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get";
-	    //private final String endpointURI = "http://" + serverName + ":" + serverPort + "/catalog/resources/catalog";
-	    //private final String endpointURI = "http://" + WildFlyUtil.getHostName() + ":" + WildFlyUtil.getHostPort() + "/catalog/resources/catalog";
-	    String serviceName = "dataIngester";
-		
-	    int port = 8080;
-
-		CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("localhost:2181",
-				new RetryNTimes(5, 1000));
-		curatorFramework.start();
-		try {
-			
-			ServiceInstance serviceInstance = ServiceInstance.builder().uriSpec(new UriSpec(endpointURI)).address("localhost").port(port).name(serviceName).build();
-			ServiceDiscoveryBuilder.builder(Void.class).basePath("load-balancing-example-dataIngester").client(curatorFramework)
-			.thisInstance(serviceInstance).build().start();
-			
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		try {
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	
-	}
 	
 	//DataIngesterInit dataIngester;
 	public static Logger log = Logger.getLogger(DataIngester.class.getName());

@@ -1,6 +1,9 @@
 package com.scientificgateway.milestone1;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URI;
+import java.net.URL;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -50,7 +53,7 @@ public class DataIngesterManager {
 		System.out.println("in delegate manager-dataingester");
 
 		ServiceDiscovery<Void> serviceDiscovery = ServiceDiscoveryBuilder.builder(Void.class)
-				.basePath("load-balancing-example-dataIngester").client(curatorFramework).build();
+				.basePath("load-balancing-example").client(curatorFramework).build();
 		try {
 			serviceDiscovery.start();
 		} catch (Exception e) {
@@ -90,13 +93,12 @@ public class DataIngesterManager {
 			System.out.println(url);
 
 			System.out.println("hello");
-
+			
 			URIBuilder builder = new URIBuilder();
-			builder.setScheme("http").setHost("localhost:8080")
-					.setPath("/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get")
-					.setParameter("station", stationMain).setParameter("date", date).setParameter("hours", hours)
+			builder.setPath(url).setParameter("station", stationMain).setParameter("date", date).setParameter("hours", hours)
 					.setParameter("minutes", minutes).setParameter("seconds", seconds);
 			URI uri = builder.build();
+			System.out.println(uri);
 			HttpGet httpget = new HttpGet(uri);
 			ClientConfig clientConfig = new ClientConfig();
 			Client client = ClientBuilder.newClient(clientConfig);

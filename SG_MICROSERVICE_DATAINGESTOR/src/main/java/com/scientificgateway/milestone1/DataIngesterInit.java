@@ -1,5 +1,9 @@
 package com.scientificgateway.milestone1;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.ws.rs.GET;
@@ -14,12 +18,26 @@ import org.apache.curator.x.discovery.UriSpec;
 
 @Path("/DataIngester")
 public class DataIngesterInit extends HttpServlet {
-
+	
+	
 	@Override
 	public void init() throws ServletException {
-
+		String ip=null;
+    	try
+    	{
+	    	URL whatismyip = new URL("http://checkip.amazonaws.com");
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+							whatismyip.openStream()));
+	
+			ip = in.readLine(); //you get the IP as a String
+			System.out.println(ip);
+    	}
+    	catch (Exception exception)
+    	{
+    		exception.printStackTrace();
+    	}
 		System.out.println("Registering Data Ingester Service");
-		String endpointURI = "localhost:8080/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get";
+		String endpointURI = "http://"+ip+":8080/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get";
 		// private final String endpointURI = "http://" + serverName + ":" +
 		// serverPort + "/catalog/resources/catalog";
 		// private final String endpointURI = "http://" +
@@ -74,7 +92,7 @@ public class DataIngesterInit extends HttpServlet {
 
 			ServiceInstance serviceInstance = ServiceInstance.builder().uriSpec(new UriSpec(endpointURI))
 					.address("localhost").port(port).name(serviceName).build();
-			ServiceDiscoveryBuilder.builder(Void.class).basePath("load-balancing-example-dataIngester")
+			ServiceDiscoveryBuilder.builder(Void.class).basePath("load-balancing-example")
 					.client(curatorFramework).thisInstance(serviceInstance).build().start();
 			
 			return "done registering DataingesterInit";
