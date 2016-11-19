@@ -1,6 +1,8 @@
 package com.scientificgateway.servicelayer;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -12,6 +14,8 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 import javax.ws.*;
 
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
 import org.glassfish.jersey.client.ClientConfig;
 
 import com.scientificgateway.helpers.DownloadGZFile;
@@ -19,6 +23,16 @@ import com.scientificgateway.helpers.UNZIPfile;
 import com.scientificgateway.milestone1.DataIngester;
 
 public class DataIngesterService {
+	
+	public static int index = 0;
+
+	public static int getIndex() {
+		return index;
+	}
+
+	public static void setIndex(int index) {
+		DataIngesterService.index = index;
+	}
 
 	public String returnResponseFile(String station, String date, String hours, String minutes, String seconds)
 			throws IOException {
@@ -66,35 +80,23 @@ public class DataIngesterService {
 
 	}
 
-	public String sendURL(String url) {
+	public String sendURL(String url) throws URISyntaxException {
+		System.out.println("in send url of ingestor --> sending to storm detector delegator");
+		URIBuilder builder = new URIBuilder();
+		builder.setScheme("http").setHost("ec2-35-160-137-157.us-west-2.compute.amazonaws.com:11000")
+		.setPath("/servicegateway/stormdetector");
+		URI uri = builder.build();
+		//HttpGet httpget = new HttpGet(uri);
 		
-		DataIngester.log.info("inside sendURL() method");
-		
+		System.out.println("url to call SD delegator" +uri);
 		ClientConfig clientConfig = new ClientConfig();
-
 		Client client = ClientBuilder.newClient(clientConfig);
-
-		// System.out.println("Client client1 ");
-
-		WebTarget target = client.target("http://ec2-35-161-48-143.us-west-2.compute.amazonaws.com:9999/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetection")
-				.path("send");
+		String response =client.target(uri).request().get(String.class);
+		System.out.println("received resposne from StormDetector");
+		System.out.println(response);
 		
 		
-		
-		// System.out.println("dataingestor");
-		System.out.println("in send url    " + url);
-
-		// Response response = target.request().post(Entity.entity(url,
-		// "application/xml"), Response.class);
-		// System.out.println(response.toString());
-		String responsefrom;
-		responsefrom = target.request().post(Entity.entity(url, "application/xml"), String.class);
-		
-		DataIngester.log.info("notified Storm Detector ");
-		
-		System.out.println();
-		System.out.println(responsefrom);
-		return url;
+		return response;
 
 	}
 

@@ -23,6 +23,12 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<servlet-name>Init</servlet-name>
+		<servlet-class>com.scientificgateway.milestone1.DataIngesterInit</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>Jersey Web Application</servlet-name>
 		<url-pattern>/webapi/*</url-pattern>

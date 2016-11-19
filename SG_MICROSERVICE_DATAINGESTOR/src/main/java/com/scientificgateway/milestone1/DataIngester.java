@@ -1,6 +1,7 @@
 package com.scientificgateway.milestone1;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
@@ -9,13 +10,25 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.retry.RetryNTimes;
+import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
+import org.apache.curator.x.discovery.ServiceInstance;
+import org.apache.curator.x.discovery.UriSpec;
 import org.apache.log4j.Logger;
 
 import com.scientificgateway.BeanParams.DataIngesterParamHolder;
 import com.scientificgateway.servicelayer.DataIngesterService;
 
+
+
 @Path("/dataingester")
 public class DataIngester {
+	
+	
+	
+	//DataIngesterInit dataIngester;
 	public static Logger log = Logger.getLogger(DataIngester.class.getName());
 	private DataIngesterService DIservice;
 
@@ -23,8 +36,8 @@ public class DataIngester {
 	@Path("/get")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.TEXT_PLAIN)
-	public String returnURL(@BeanParam DataIngesterParamHolder dip) throws IOException {
-
+	public String returnURL(@BeanParam DataIngesterParamHolder dip) throws IOException, URISyntaxException {
+		System.out.println("in /get");
 		log.info("entered Data Ingester");
 		DIservice = new DataIngesterService();
 		String url = DIservice.returnResponseFile(dip.getStation(), dip.getDate(), dip.getHours(), dip.getMinutes(),
@@ -37,5 +50,8 @@ public class DataIngester {
 		return url;
 
 	}
+	
+	
+	
 
 }

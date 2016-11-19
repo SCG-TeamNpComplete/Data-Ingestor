@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd '/home/ec2-user/docker'
+
 sudo docker login -u="kedargn" -p="npcomplete"   #TODO : hide password
 sudo docker pull kedargn/dataingestor
 

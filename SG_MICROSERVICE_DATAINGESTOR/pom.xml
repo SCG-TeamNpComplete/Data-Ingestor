@@ -21,6 +21,13 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<plugin>            
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-war-plugin</artifactId>
+  				<configuration>
+  					<webXml>src\main\webapp\WEB-INF\web.xml</webXml>        
+  				</configuration>
+		</plugin>
 		</plugins>
 	</build>
 
@@ -33,6 +40,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -64,14 +72,12 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.4</version>
 		</dependency>
-
-
 
 		<!-- https://mvnrepository.com/artifact/com.google.auth/google-auth-library-oauth2-http -->
 		<dependency>
@@ -80,6 +86,31 @@
 			<version>0.4.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>2.0.0-incubating</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-x-discovery</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>2.0-EDR1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-client</artifactId>
+			<version>2.8.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.http-client</groupId>
@@ -94,15 +125,35 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/javax.ws.rs/jsr311-api -->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>jsr311-api</artifactId>
+			<version>0.11</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-client -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.19.3</version>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-oauth2 -->
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-oauth2</artifactId>
 			<version>v2-rev120-1.22.0</version>
 		</dependency>
-
-
-
 
 		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
 		<dependency>
