@@ -83,8 +83,8 @@ public class DataIngesterService {
 	public String sendURL(String url) throws URISyntaxException {
 		System.out.println("in send url of ingestor --> sending to storm detector delegator");
 		URIBuilder builder = new URIBuilder();
-		builder.setScheme("http").setHost("localhost:8080")
-		.setPath("/SG_MICROSERVICE_STORMDETECTOR/gateway/StormDetectionManager/delegate");
+		builder.setScheme("http").setHost("ec2-35-160-137-157.us-west-2.compute.amazonaws.com:11000")
+		.setPath("/servicegateway/stormdetector");
 		URI uri = builder.build();
 		//HttpGet httpget = new HttpGet(uri);
 		
