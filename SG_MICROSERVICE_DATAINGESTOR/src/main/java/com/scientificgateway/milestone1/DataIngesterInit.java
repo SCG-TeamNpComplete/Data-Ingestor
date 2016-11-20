@@ -47,8 +47,11 @@ public class DataIngesterInit extends HttpServlet {
 
 		int port = 8080;
 
-		CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("localhost:2181",
-				new RetryNTimes(5, 1000));
+		/*CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("localhost:2181",
+				new RetryNTimes(5, 1000));*/
+		
+		CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("ec2-35-161-48-143.us-west-2.compute.amazonaws.com:2181", new RetryNTimes(5, 1000));
+		//curatorFramework.start();
 		curatorFramework.start();
 		try {
 

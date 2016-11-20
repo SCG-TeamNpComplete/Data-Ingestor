@@ -165,7 +165,7 @@ div.thumbnail .glyphicon-ok-circle {
 	<div class="container jf-form">
 		<form data-licenseKey="" name="jqueryform-96767c"
 			id="jqueryform-96767c"
-			action='http://ec2-35-160-137-157.us-west-2.compute.amazonaws.com:11000/servicegateway/dataingester'
+			action='/SG_MICROSERVICE_DATAINGESTOR/webapi/DataIngesterManager/delegate'
 			method='get' enctype='multipart/form-data' novalidate
 			autocomplete="on">
 			<input type="hidden" name="method" value="validateForm"> <input
