@@ -37,7 +37,7 @@ public class DataIngesterInit extends HttpServlet {
     		exception.printStackTrace();
     	}
 		System.out.println("Registering Data Ingester Service");
-		String endpointURI = "http://"+ip+":8080/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get";
+		String endpointURI = "http://"+ip+":8085/SG_MICROSERVICE_DATAINGESTOR/webapi/dataingester/get";
 		// private final String endpointURI = "http://" + serverName + ":" +
 		// serverPort + "/catalog/resources/catalog";
 		// private final String endpointURI = "http://" +
