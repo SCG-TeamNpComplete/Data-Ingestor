@@ -143,6 +143,12 @@ public class DataIngesterManager {
 			builder.setPath(url).setParameter("station", stationMain).setParameter("date", date)
 					.setParameter("hours", hours).setParameter("minutes", minutes).setParameter("seconds", seconds);
 			URI uri = builder.build();
+			
+			
+			
+			
+			
+			
 			System.out.println(uri);
 			HttpGet httpget = new HttpGet(uri);
 			ClientConfig clientConfig = new ClientConfig();
