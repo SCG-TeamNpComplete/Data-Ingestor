@@ -161,6 +161,10 @@ public class DataIngesterManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		finally{
+			curatorFramework.close();	
+		}
 
 		return "dataIngester - nothing";
 
