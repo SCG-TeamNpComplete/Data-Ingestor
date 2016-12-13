@@ -48,7 +48,7 @@
 			$("tr").remove(".res");
 			$.ajax({
 				type : "GET",
-				url : "http://localhost:8888/SG_MICROSERVICE_STROMCLUSTERING/gateway/getjobdetails",
+				url : "http://ec2-35-161-48-143.us-west-2.compute.amazonaws.com:8888/SG_MICROSERVICE_STROMCLUSTERING/gateway/getjobdetails",
 				dataType : "json",
 				error : function(xhr, err) {
 					alert("readyState: " + xhr.readyState + "\nstatus: "
