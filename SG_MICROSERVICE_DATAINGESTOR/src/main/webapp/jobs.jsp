@@ -48,7 +48,7 @@
 			$("tr").remove(".res");
 			$.ajax({
 				type : "GET",
-				url : "localhost:8888/SG_MICROSERVICE_STROMCLUSTERING/gateway/getjobdetails",
+				url : "http://localhost:8888/SG_MICROSERVICE_STROMCLUSTERING/gateway/getjobdetails",
 				dataType : "json",
 				error : function(xhr, err) {
 					alert("readyState: " + xhr.readyState + "\nstatus: "
