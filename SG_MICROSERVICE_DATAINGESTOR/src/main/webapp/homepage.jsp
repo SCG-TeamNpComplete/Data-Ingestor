@@ -270,7 +270,10 @@ div.thumbnail .glyphicon-ok-circle {
 
 				<button type="button" onclick="signOut()" class="btn btn-primary btn-lg"
 					style="z-index: 1;">Sign out</button>
-
+				
+				<a href="/SG_MICROSERVICE_DATAINGESTOR/webapi/viewjobs"><button type="button" class="btn btn-primary btn-lg"
+					style="z-index: 1;">Jobs Page</button></a>
+				
 				<p class="error bg-warning" style="display: none;">Please check
 					the required fields.</p>
 
